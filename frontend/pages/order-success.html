@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Commande confirmée - ÉcoDélices</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <div class="card" style="text-align:center">
+      <h1>Commande confirmée</h1>
+      <p class="small">Numéro de commande :</p>
+      <div style="font-size:28px;font-weight:900" id="orderNumber">—</div>
+      <div class="form-actions" style="justify-content:center;margin-top:14px">
+        <a class="btn" href="shop.html">Retour boutique</a>
+        <a class="btn btn-primary" href="../index.html">Accueil</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/shop.js"></script>
+  <script>
+    window.ecoShop.renderOrderSuccess("orderNumber");
+  </script>
+</body>
+</html>

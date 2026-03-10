@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ÉcoDélices — Contact</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container" style="padding:26px 0">
+    <div class="card">
+      <h1>Contact</h1>
+      <p>Formulaire de contact pour les clients. Les messages sont enregistrés dans le localStorage.</p>
+
+      <form id="contactForm" class="form-row">
+        <input name="name" placeholder="Nom" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <textarea name="message" placeholder="Message" required></textarea>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Envoyer</button>
+          <span id="contactMsg" class="small"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="../js/app.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+        date: new Date().toISOString()
+      };
+
+      const raw = localStorage.getItem("eco_contacts") || "[]";
+      const list = JSON.parse(raw);
+      list.push(data);
+      localStorage.setItem("eco_contacts", JSON.stringify(list));
+
+      form.reset();
+      document.getElementById("contactMsg").textContent = "Message envoyé ✅ (démo)";
+    });
+  </script>
+</body>
+</html>
